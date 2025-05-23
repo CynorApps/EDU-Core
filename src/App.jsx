@@ -7,7 +7,8 @@ const Layout = lazy(() => import("@/routes/layout"));
 const DashboardPage = lazy(() => import("@/routes/dashboard/page"));
 const AdmissionPage = lazy(() => import("@/routes/admission/page"));
 const ClassPage = lazy(() => import("@/routes/class/page"));
-const UsersPage = lazy(() => import("@/routes/users/page"));
+const TeachersPage = lazy(() => import("@/routes/teachers/page"));
+const TeacherCreateFormPage = lazy(() => import("@/routes/teachers/teachercreateform"));
 const StudentEvaluationPage = lazy(() => import("@/routes/student-evaluation/page"));
 const HomeworkPage = lazy(() => import("@/routes/homework/page"));
 const AttendancePage = lazy(() => import("@/routes/attendance/page"));
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
       { index: true, element: <DashboardPage /> },
       { path: "admission", element: <AdmissionPage /> },
       { path: "class", element: <ClassPage /> },
-      { path: "users", element: <UsersPage /> },
+      { path: "teachers", element: <TeachersPage /> },
+      { path: "teachercreateform", element: <TeacherCreateFormPage /> },
       { path: "student-evaluation", element: <StudentEvaluationPage /> },
       { path: "homework", element: <HomeworkPage /> },
       { path: "attendance", element: <AttendancePage /> },

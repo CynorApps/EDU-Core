@@ -2,7 +2,7 @@ import {
   Home,
   UserPlus,
   School,
-  Users,
+  GraduationCap,
   FileBarChart,
   ClipboardList,
   CalendarDays,
@@ -38,9 +38,9 @@ export const navbarLinks = [
         path: "/class",
       },
       {
-        label: "Users",
-        icon: Users,
-        path: "/users",
+        label: "Teachers",
+        icon: GraduationCap,
+        path: "/teachers",
       },
       {
         label: "Student Evaluation",
