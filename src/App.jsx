@@ -9,7 +9,12 @@ const AdmissionPage = lazy(() => import("@/routes/admission/page"));
 const ClassPage = lazy(() => import("@/routes/class/page"));
 const TeachersPage = lazy(() => import("@/routes/teachers/page"));
 const TeacherCreateFormPage = lazy(() => import("@/routes/teachers/teachercreateform"));
-const StudentEvaluationPage = lazy(() => import("@/routes/student-evaluation/page"));
+const StudentManagementPage = lazy(() => import("@/routes/student-management/page"));
+const ProfilePage = lazy(() => import("@/routes/student-management/profiles"));
+const AttendanceTrackingPage = lazy(() => import("@/routes/student-management/attendance-tracking"));
+const AdmissionsPage = lazy(() => import("@/routes/student-management/admissions"));
+const DisciplineRecordsPage = lazy(() => import("@/routes/student-management/discipline-records"));
+const PromotionTransferPage = lazy(() => import("@/routes/student-management/promotion-transfer"));
 const HomeworkPage = lazy(() => import("@/routes/homework/page"));
 const AttendancePage = lazy(() => import("@/routes/attendance/page"));
 const PaymentPage = lazy(() => import("@/routes/payment/page"));
@@ -30,7 +35,12 @@ const router = createBrowserRouter([
       { path: "class", element: <ClassPage /> },
       { path: "teachers", element: <TeachersPage /> },
       { path: "teachercreateform", element: <TeacherCreateFormPage /> },
-      { path: "student-evaluation", element: <StudentEvaluationPage /> },
+      { path: "student-management", element: <StudentManagementPage /> },
+      { path: "attendance-tracking", element: <AttendanceTrackingPage /> },
+      { path: "admissions", element: <AdmissionsPage /> },
+      { path: "profiles", element: <ProfilePage /> },
+      { path: "promotion-transfer", element: <PromotionTransferPage /> },
+      { path: "discipline-records", element: <DisciplineRecordsPage /> },
       { path: "homework", element: <HomeworkPage /> },
       { path: "attendance", element: <AttendancePage /> },
       { path: "payment", element: <PaymentPage /> },

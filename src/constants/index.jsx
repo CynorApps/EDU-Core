@@ -43,9 +43,9 @@ export const navbarLinks = [
         path: "/teachers",
       },
       {
-        label: "Student Evaluation",
+        label: "Student management",
         icon: FileBarChart,
-        path: "/student-evaluation",
+        path: "/student-management",
       },
       {
         label: "Homework",
