@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/theme-context";
 import { Suspense, lazy } from "react";
 
@@ -24,32 +24,78 @@ const TransportsPage = lazy(() => import("@/routes/transports/page"));
 const ReportPage = lazy(() => import("@/routes/report/page"));
 const SettingsPage = lazy(() => import("@/routes/settings/page"));
 const NotFoundPage = lazy(() => import("@/routes/not-found"));
+const RegisterPage = lazy(() => import("@/routes/register/page"));
+const LoginPage = lazy(() => import("@/routes/login/page"));
+
+// Simulated authentication check (will be updated with real auth)
+const isAuthenticated = () => {
+  return localStorage.getItem("token") !== null;
+};
+
+// PrivateRoute component to protect routes
+const PrivateRoute = ({ children }) => {
+  return isAuthenticated() ? children : <Navigate to="/login" replace />;
+};
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
     children: [
-      { index: true, element: <DashboardPage /> },
-      { path: "admission", element: <AdmissionPage /> },
-      { path: "class", element: <ClassPage /> },
-      { path: "teachers", element: <TeachersPage /> },
-      { path: "teachercreateform", element: <TeacherCreateFormPage /> },
-      { path: "student-management", element: <StudentManagementPage /> },
-      { path: "attendance-tracking", element: <AttendanceTrackingPage /> },
-      { path: "admissions", element: <AdmissionsPage /> },
-      { path: "profiles", element: <ProfilePage /> },
-      { path: "promotion-transfer", element: <PromotionTransferPage /> },
-      { path: "discipline-records", element: <DisciplineRecordsPage /> },
-      { path: "homework", element: <HomeworkPage /> },
-      { path: "attendance", element: <AttendancePage /> },
-      { path: "payment", element: <PaymentPage /> },
-      { path: "library", element: <LibraryPage /> },
-      { path: "hostel", element: <HostelPage /> },
-      { path: "transports", element: <TransportsPage /> },
-      { path: "report", element: <ReportPage /> },
-      { path: "settings", element: <SettingsPage /> },
-      { path: "*", element: <NotFoundPage /> },
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+            <LoginPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "register",
+        element: (
+          <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+            <RegisterPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "login",
+        element: (
+          <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+            <LoginPage />
+          </Suspense>
+        ),
+      },
+      {
+        element: (
+          <PrivateRoute>
+            <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+              <Layout />
+            </Suspense>
+          </PrivateRoute>
+        ),
+        children: [
+          { path: "dashboard", element: <DashboardPage /> },
+          { path: "admission", element: <AdmissionPage /> },
+          { path: "class", element: <ClassPage /> },
+          { path: "teachers", element: <TeachersPage /> },
+          { path: "teachercreateform", element: <TeacherCreateFormPage /> },
+          { path: "student-management", element: <StudentManagementPage /> },
+          { path: "attendance-tracking", element: <AttendanceTrackingPage /> },
+          { path: "admissions", element: <AdmissionsPage /> },
+          { path: "profiles", element: <ProfilePage /> },
+          { path: "promotion-transfer", element: <ProfilePage /> },
+          { path: "discipline-records", element: <DisciplineRecordsPage /> },
+          { path: "homework", element: <HomeworkPage /> },
+          { path: "attendance", element: <AttendancePage /> },
+          { path: "payment", element: <PaymentPage /> },
+          { path: "library", element: <LibraryPage /> },
+          { path: "hostel", element: <HostelPage /> },
+          { path: "transports", element: <TransportsPage /> },
+          { path: "report", element: <ReportPage /> },
+          { path: "settings", element: <SettingsPage /> },
+          { path: "*", element: <NotFoundPage /> },
+        ],
+      },
     ],
   },
 ]);
@@ -57,9 +103,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ThemeProvider storageKey="theme">
-      <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }
