@@ -28,7 +28,7 @@ export const navbarLinks = [
         path: "/",
       },
       {
-        label: "Admission",
+        label: "Admission Management",
         icon: UserPlus,
         path: "/admission",
       },
@@ -43,7 +43,7 @@ export const navbarLinks = [
         path: "/teachers",
       },
       {
-        label: "Student management",
+        label: "Student Management",
         icon: FileBarChart,
         path: "/student-management",
       },
