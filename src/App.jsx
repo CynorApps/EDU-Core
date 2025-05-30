@@ -6,11 +6,6 @@ import { Suspense, lazy } from "react";
 const Layout = lazy(() => import("@/routes/layout"));
 const DashboardPage = lazy(() => import("@/routes/dashboard/page"));
 const AdmissionPage = lazy(() => import("@/routes/admission/page"));
-const AdmitStudentPage = lazy(() => import("@/routes/admission/admit-student"));
-const AdmitBulkStudentPage = lazy(() => import("@/routes/admission/admit-bulk-student"));
-const PrintFormPage = lazy(() => import("@/routes/admission/print-forms"));
-const RequestsPage = lazy(() => import("@/routes/admission/requests"));
-const EnquiriesPage = lazy(() => import("@/routes/admission/enquiries"));
 const ClassPage = lazy(() => import("@/routes/class/page"));
 const TeachersPage = lazy(() => import("@/routes/teachers/page"));
 const TeacherCreateFormPage = lazy(() => import("@/routes/teachers/teachercreateform"));
@@ -34,19 +29,22 @@ const LoginPage = lazy(() => import("@/routes/login/page"));
 
 // Simulated authentication check (will be updated with real auth)
 const isAuthenticated = () => {
-  return localStorage.getItem("token") !== null;
+  const token = localStorage.getItem("token");
+  console.log("Token in isAuthenticated:", token); // Debug log
+  return token !== null;
 };
 
 // PrivateRoute component to protect routes
 const PrivateRoute = ({ children }) => {
-  return isAuthenticated() ? children : <Navigate to="/login" replace />;
+  const authenticated = isAuthenticated();
+  console.log("PrivateRoute - Authenticated:", authenticated); // Debug log
+  return authenticated ? children : <Navigate to="/login" replace />;
 };
 
 const router = createBrowserRouter([
   {
     path: "/",
     children: [
-<<<<<<< HEAD
       {
         index: true,
         element: (
@@ -89,7 +87,7 @@ const router = createBrowserRouter([
           { path: "attendance-tracking", element: <AttendanceTrackingPage /> },
           { path: "admissions", element: <AdmissionsPage /> },
           { path: "profiles", element: <ProfilePage /> },
-          { path: "promotion-transfer", element: <ProfilePage /> },
+          { path: "promotion-transfer", element: <PromotionTransferPage /> },
           { path: "discipline-records", element: <DisciplineRecordsPage /> },
           { path: "homework", element: <HomeworkPage /> },
           { path: "attendance", element: <AttendancePage /> },
@@ -102,33 +100,6 @@ const router = createBrowserRouter([
           { path: "*", element: <NotFoundPage /> },
         ],
       },
-=======
-      { index: true, element: <DashboardPage /> },
-      { path: "admission", element: <AdmissionPage /> },
-      { path: "admit-student", element: <AdmitStudentPage /> },
-      { path: "admit-bulk-student", element: <AdmitBulkStudentPage /> },
-      { path: "print-forms", element: <PrintFormPage /> },
-      { path: "requests", element: <RequestsPage /> },
-      { path: "enquiries", element: <EnquiriesPage /> },
-      { path: "class", element: <ClassPage /> },
-      { path: "teachers", element: <TeachersPage /> },
-      { path: "teachercreateform", element: <TeacherCreateFormPage /> },
-      { path: "student-management", element: <StudentManagementPage /> },
-      { path: "attendance-tracking", element: <AttendanceTrackingPage /> },
-      { path: "admissions", element: <AdmissionsPage /> },
-      { path: "profiles", element: <ProfilePage /> },
-      { path: "promotion-transfer", element: <PromotionTransferPage /> },
-      { path: "discipline-records", element: <DisciplineRecordsPage /> },
-      { path: "homework", element: <HomeworkPage /> },
-      { path: "attendance", element: <AttendancePage /> },
-      { path: "payment", element: <PaymentPage /> },
-      { path: "library", element: <LibraryPage /> },
-      { path: "hostel", element: <HostelPage /> },
-      { path: "transports", element: <TransportsPage /> },
-      { path: "report", element: <ReportPage /> },
-      { path: "settings", element: <SettingsPage /> },
-      { path: "*", element: <NotFoundPage /> },
->>>>>>> ea27722a0257fc97626e3542615435fa53808df9
     ],
   },
 ]);
@@ -136,24 +107,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ThemeProvider storageKey="theme">
-<<<<<<< HEAD
       <RouterProvider router={router} />
-=======
-      <Suspense fallback={
-        <div class="animate-pulse flex flex-col items-center gap-4 w-60">
-          <div>
-            <div class="w-48 h-6 bg-slate-400 rounded-md"></div>
-            <div class="w-28 h-4 bg-slate-400 mx-auto mt-3 rounded-md"></div>
-          </div>
-          <div class="h-7 bg-slate-400 w-full rounded-md"></div>
-          <div class="h-7 bg-slate-400 w-full rounded-md"></div>
-          <div class="h-7 bg-slate-400 w-full rounded-md"></div>
-          <div class="h-7 bg-slate-400 w-1/2 rounded-md"></div>
-        </div>
-      }>
-        <RouterProvider router={router} />
-      </Suspense>
->>>>>>> ea27722a0257fc97626e3542615435fa53808df9
     </ThemeProvider>
   );
 }

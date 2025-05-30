@@ -9,50 +9,70 @@ const AdmissionPage: React.FC = () => {
     <main className="flex-1 p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <h1 className="text-2xl font-bold mb-6">Student Management</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {/* Admit Student Button */}
-        <button
+        {/* Admit Student Card */}
+        <div
           onClick={() => navigate('/admit-student')}
-          className="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg shadow hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          className="card cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
-          <UserPlus className="w-6 h-6" />
-          <span className="text-lg font-medium text-left">Admit Student</span>
-        </button>
+          <div className="card-header flex flex-col items-center">
+            <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
+              <UserPlus size={26} />
+            </div>
+            <p className="card-title mt-2 text-center">Admit Student</p>
+          </div>
+        </div>
 
-        {/* Admit Bulk Student Button */}
-        <button
+        {/* Admit Bulk Student Card */}
+        <div
           onClick={() => navigate('/admit-bulk-student')}
-          className="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg shadow hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          className="card cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
-          <Users className="w-6 h-6" />
-          <span className="text-lg font-medium text-left">Admit Bulk Student</span>
-        </button>
+          <div className="card-header flex flex-col items-center">
+            <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
+              <Users size={26} />
+            </div>
+            <p className="card-title mt-2 text-center">Admit Bulk Student</p>
+          </div>
+        </div>
 
-        {/* Admission Requests Button */}
-        <button
+        {/* Admission Requests Card */}
+        <div
           onClick={() => navigate('/requests')}
-          className="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg shadow hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          className="card cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
-          <FileText className="w-6 h-6" />
-          <span className="text-lg font-medium text-left">Admission Requests</span>
-        </button>
+          <div className="card-header flex flex-col items-center">
+            <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
+              <FileText size={26} />
+            </div>
+            <p className="card-title mt-2 text-center">Admission Requests</p>
+          </div>
+        </div>
 
-        {/* Admission Enquiries Button */}
-        <button
+        {/* Admission Enquiries Card */}
+        <div
           onClick={() => navigate('/enquiries')}
-          className="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg shadow hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          className="card cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
-          <HelpCircle className="w-6 h-6" />
-          <span className="text-lg font-medium text-left">Admission Enquiries</span>
-        </button>
+          <div className="card-header flex flex-col items-center">
+            <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
+              <HelpCircle size={26} />
+            </div>
+            <p className="card-title mt-2 text-center">Admission Enquiries</p>
+          </div>
+        </div>
 
-        {/* Print Form Button */}
-        <button
+        {/* Print Form Card */}
+        <div
           onClick={() => navigate('/print-forms')}
-          className="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg shadow hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          className="card cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
-          <Printer className="w-6 h-6" />
-          <span className="text-lg font-medium text-left">Print Form</span>
-        </button>
+          <div className="card-header flex flex-col items-center">
+            <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
+              <Printer size={26} />
+            </div>
+            <p className="card-title mt-2 text-center">Print Form</p>
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -29,6 +29,7 @@ router.get("/me", authMiddleware, async (req, res) => {
     }
     res.json({ name: user.name, profilePhoto: user.profilePhoto });
   } catch (err) {
+    console.log("Error in /me:", err.message); // Debug log
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -77,7 +78,7 @@ router.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "24h", // Changed from 1h to 24h
     });
 
     res.json({ token });
