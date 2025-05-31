@@ -6,6 +6,11 @@ import { Suspense, lazy } from "react";
 const Layout = lazy(() => import("@/routes/layout"));
 const DashboardPage = lazy(() => import("@/routes/dashboard/page"));
 const AdmissionPage = lazy(() => import("@/routes/admission/page"));
+const AdmitStudentPage = lazy(() => import("@/routes/admission/admit-student"));
+const AdmitBulkStudentPage = lazy(() => import("@/routes/admission/admit-bulk-student"));
+const PrintFormPage = lazy(() => import("@/routes/admission/print-forms"));
+const RequestsPage = lazy(() => import("@/routes/admission/requests"));
+const EnquiriesPage = lazy(() => import("@/routes/admission/enquiries"));
 const ClassPage = lazy(() => import("@/routes/class/page"));
 const TeachersPage = lazy(() => import("@/routes/teachers/page"));
 const TeacherCreateFormPage = lazy(() => import("@/routes/teachers/teachercreateform"));
@@ -80,6 +85,11 @@ const router = createBrowserRouter([
         children: [
           { path: "dashboard", element: <DashboardPage /> },
           { path: "admission", element: <AdmissionPage /> },
+          { path: "admit-student", element: <AdmitStudentPage /> },
+          { path: "admit-bulk-student", element: <AdmitBulkStudentPage /> },
+          { path: "print-forms", element: <PrintFormPage /> },
+          { path: "requests", element: <RequestsPage /> },
+          { path: "enquiries", element: <EnquiriesPage /> },
           { path: "class", element: <ClassPage /> },
           { path: "teachers", element: <TeachersPage /> },
           { path: "teachercreateform", element: <TeacherCreateFormPage /> },
